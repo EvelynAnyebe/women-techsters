@@ -1,0 +1,30 @@
+main {
+  width: 650px;
+  background-color: lightgrey;
+  margin: 10px auto;
+  padding: 10px;
+  border: 10px solid black;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+#sub-heading {
+  background-color: yellow;
+  padding: 10px;
+}
+
+.small {
+  width: 240px;
+  margin: 10px auto;
+}
+
+.small img {
+  width: 100%;
+  height: auto;
+}
+
+.small figcaption {
+  display: block;
+  text-align: center;
+}
