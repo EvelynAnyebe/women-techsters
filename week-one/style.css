@@ -5,6 +5,9 @@ main {
   padding: 10px;
   border: 10px solid black;
 }
+body {
+  background-color: dimgrey;
+}
 
 .underlined {
   text-decoration: underline;
@@ -27,4 +30,55 @@ main {
 .small figcaption {
   display: block;
   text-align: center;
+}
+
+.notification-button {
+  position: relative;
+  margin-top: 200px;
+  margin-left: 120px;
+
+  border: 0px;
+  background-color: lime;
+  padding: 15px 40px;
+  font-weight: bold;
+  color: #444;
+
+  box-shadow: 0 5px 5px -3px #ddd;
+}
+
+.notification-label {
+  display: inline-block;
+  padding: 3px;
+  font-size: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: red;
+  color: white;
+
+  position: absolute;
+  top: -8px;
+  right: -5px;
+}
+
+.profile-avater {
+  background-image: url("/avater.png");
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-size: cover;
+  border: 0px;
+  border-radius: 100%;
+}
+
+.profile-status-label {
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: darkred;
+  top: -1px;
+  right: 10px;
 }
