@@ -13,7 +13,7 @@
     <title>Document</title>
   </head>
   <body>
-    <header>
+    <header class="section-style">
       <h1 class="title">Welcome</h1>
       <h4 class="sub-title">Palm beach</h4>
     </header>
@@ -26,9 +26,9 @@
       </ul>
     </nav>
 
-    <section id="about">
-      <img src="image.jpg" />
-      <h1>About us</h1>
+    <section id="about" class="section-style">
+      <img src="image.jpg" class="image-design" />
+      <h1 class="orange">About us</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem eos dolor
         libero quis corrupti corporis, eveniet repudiandae fugiat laborum
@@ -43,8 +43,34 @@
         eveniet incidunt illo officia veniam. Dolor laudantium sint suscipit!
       </p>
     </section>
+    <section id="gallery" class="section-style">
+      <h1 class="orange">Gallery</h1>
+      <p>Enjoy some of the most beautiful places on palm beach</p>
+
+      <div class="grid-container">
+        <img src="./week-task/images/hero.jpg" class="image-design" />
+        <img src="image.jpg" class="image-design" />
+        <img src="./week-task/images/hero.jpg" class="image-design" />
+        <img src="image.jpg" class="image-design" />
+        <img src="./week-task/images/hero.jpg" class="image-design" />
+        <img src="image.jpg" class="image-design" />
+        <img src="./week-task/images/hero.jpg" class="image-design" />
+        <img src="image.jpg" class="image-design" />
+      </div>
+    </section>
+
+    <section id="visit-us" class="section-style">
+      <h1 class="orange">Visit Us</h1>
+      <p>We would love for you to visit us. Tell us more</p>
+      <form>
+        <input type="text" placeholder="Firstname" />
+        <input type="email" placeholder="Email" />
+        <input id="date" type="date" />
+        <button id="submit-button" type="submit">Expect me</button>
+      </form>
+    </section>
     <footer id="footer">
-      <p>Site created by Frankchaongseng. Copyright &copy; 2021</p>
+      <p>Site created by Evelyn Anyebe. Copyright &copy; 2021</p>
     </footer>
   </body>
 </html>

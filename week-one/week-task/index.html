@@ -24,7 +24,6 @@
       </ul>
     </nav>
     <header class="container">
-<<<<<<< HEAD
       <div class="header-image"></div>
       <div class="header-text">
         <h1>Meet Evelyn</h1>
@@ -32,14 +31,6 @@
           A WomenTechsters fellow in the software development track. She is a
           tech enthuasiast and with cool personality
         </p>
-=======
-      <div class="header-image">
-        <img src="images/image.jpg" />
-      </div>
-      <div class="header-text">
-        <h1>Meet Evelyn</h1>
-        <p>A WomenTechsters fellow in the software development track</p>
->>>>>>> 9a6c0cfcc851db4b44d2e6b0fb5a165277962aa0
         <div class="container social">
           <a
             class="btn"
@@ -84,19 +75,10 @@
         </div>
       </div>
     </header>
-    <section id="about">
-      <video
-        playsinline
-        autoplay
-        muted
-        loop
-        poster="nice-background.jpg"
-        id="bgvid"
-      >
-        <source src="hero.mp4" type="video/mp4" />
-      </video>
-      <div class="about-content">
-        <h2>About me</h2>
+    <section id="about" class="container">
+      <img src="images/nice-background.jpg" />
+      <article class="about-content">
+        <h1>About me</h1>
         <p>
           Evelyn Anyebe is a software developer with experience in data
           engineering and artificial intelligence. She is a problem solver, a
@@ -108,10 +90,10 @@
           about software development. Evelyn has a simple personality. She can
           work under pressure and is a very committed team member.
         </p>
-      </div>
+      </article>
     </section>
     <section id="gallery" class="container">
-      <h2>Gallery of projects</h2>
+      <h1>Gallery of projects</h1>
       <div class="gallery-item">
         <img src="avater.png" class="item-image" />
         <h4 class="item-title">Title</h4>
@@ -119,21 +101,28 @@
       </div>
     </section>
     <section id="contact" class="container">
-      <h2>Send me a message</h2>
-      <form>
-        <div>
+      <div class="contact-text">
+        <h1>Send Evelyn a message</h1>
+        <p>
+          Connect by sending a message to Evelyn or reach out to her on social
+          media.
+        </p>
+      </div>
+
+      <form class="contact-form">
+        <div class="input-group">
           <label>Full name</label>
-          <input type="text" />
+          <input type="text" placeholder="Your name" autocomplete="off" />
         </div>
-        <div>
+        <div class="input-group">
           <label>Email</label>
-          <input type="email" />
+          <input type="email" placeholder="Your email" autocomplete="off" />
         </div>
-        <div>
+        <div class="input-group">
           <label>Message</label>
           <textarea></textarea>
         </div>
-        <button class="btn">Send message</button>
+        <button class="btn btn-pink">Send message</button>
       </form>
     </section>
     <footer>
