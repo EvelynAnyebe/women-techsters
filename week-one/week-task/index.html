@@ -13,18 +13,19 @@
     <title>Evelyn-Anyebe-About</title>
   </head>
   <body>
-    <nav class="container">
-      <a href="#"><span class="logo"></span></a>
+    <nav>
+      <a href="#top"><span class="logo"></span></a>
       <ul class="nav-center">
-        <li><a href="#"> About</a></li>
-        <li><a href="#">Gallery</a></li>
+        <li><a href="#top"> Home</a></li>
+        <li><a href="#about"> About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
       </ul>
       <ul class="nav-left">
-        <li><a href="#" class="btn contact-btn">Contact</a></li>
+        <li><a href="#contact" class="btn contact-btn">Contact</a></li>
       </ul>
     </nav>
-    <header class="container">
-      <div class="header-image"></div>
+    <header>
+      <div class="header-image card-box"></div>
       <div class="header-text">
         <h1>Meet Evelyn</h1>
         <p>
@@ -34,7 +35,7 @@
         <div class="container social">
           <a
             class="btn"
-            href="https://web.facebook.com/royalgroceryshoppa"
+            href="https://web.facebook.com/anyebeevelyn/"
             target="_blank"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
@@ -44,7 +45,10 @@
               />
             </svg>
           </a>
-          <a class="btn" href="#">
+          <a
+            class="btn"
+            href="https://www.youtube.com/channel/UCZ561PanxFvyk2dT626Bzgw"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20">
               <title>YouTube</title>
               <path
@@ -52,7 +56,7 @@
               />
             </svg>
           </a>
-          <a class="btn" href="#">
+          <a class="btn" href="https://twitter.com/EvelynAnyebe">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="18">
               <title>Twitter</title>
               <path
@@ -62,7 +66,7 @@
           </a>
           <a
             class="btn"
-            href="https://www.instagram.com/royalgroceryshoppa/"
+            href="https://www.instagram.com/anyebeevelyn/"
             target="_blank"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20">
@@ -75,29 +79,83 @@
         </div>
       </div>
     </header>
-    <section id="about" class="container">
-      <img src="images/nice-background.jpg" />
-      <article class="about-content">
+    <section id="about">
+      <article class="about-content container">
         <h1>About me</h1>
-        <p>
-          Evelyn Anyebe is a software developer with experience in data
-          engineering and artificial intelligence. She is a problem solver, a
-          change agent, and a strong advocate for capacity building and skills
-          development. Evelyn graduated from Benue State University Makurdi
-          where she obtained a BSc in computer science. She holds an Msc in data
-          engineering from University of Dundee. She is part of BitDev Africa (a
-          community of young African tech enthuaist in Nigeria) and passionate
-          about software development. Evelyn has a simple personality. She can
-          work under pressure and is a very committed team member.
-        </p>
+        <div class="about-top">
+          <img src="images/nice-background.jpg" class="card-box" />
+          <p>
+            Evelyn Anyebe is a software developer with experience in data
+            engineering and artificial intelligence. She is a problem solver, a
+            change agent, and a strong advocate for capacity building and skills
+            development. Evelyn graduated from Benue State University Makurdi
+            where she obtained a BSc in computer science. She holds an Msc in
+            data engineering from University of Dundee. She is part of BitDev
+            Africa (a community of young African tech enthuaist in Nigeria) and
+            passionate about software development. Evelyn has a simple
+            personality. She can work under pressure and is a very committed
+            team member.
+          </p>
+        </div>
+        <div class="grid-container">
+          <div>
+            <h2>&diams;</h2>
+            <p>
+              <small
+                >Evelyn is interested software development. She has is curious
+                about other tech skills like data science and artificial
+                intelligence. She intend to develop her skills here too.</small
+              >
+            </p>
+          </div>
+          <div>
+            <h2>&clubs;</h2>
+            <p>
+              <small
+                >As part of her community support activities, Evelyn like to
+                volunteer to teach tech skills. She intend to create awareness
+                on software development oppurtunities during her community
+                development task.</small
+              >
+            </p>
+          </div>
+          <div>
+            <h2>&hearts;</h2>
+            <p>
+              <small
+                >loves to read, watch talent shows and teach. She likes to
+                experience different cultures except foods because of
+                allergies.</small
+              >
+            </p>
+          </div>
+        </div>
       </article>
     </section>
     <section id="gallery" class="container">
       <h1>Gallery of projects</h1>
-      <div class="gallery-item">
-        <img src="avater.png" class="item-image" />
-        <h4 class="item-title">Title</h4>
-        <p class="item-description">text description</p>
+      <div class="grid-container">
+        <div class="gallery-item">
+          <img src="images/gallery/love-codong.jpg" class="card-box" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/love-collaboration.jpg" class="card-box" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/love-workspace.jpg" class="card-box" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/love-this-group.jpg" class="card-box" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/love-tech.jpg" class="card-box" />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="images/gallery/software-dev-love-cooking.jpg"
+            class="card-box"
+          />
+        </div>
       </div>
     </section>
     <section id="contact" class="container">
@@ -109,7 +167,7 @@
         </p>
       </div>
 
-      <form class="contact-form">
+      <form class="contact-form card-box">
         <div class="input-group">
           <label>Full name</label>
           <input type="text" placeholder="Your name" autocomplete="off" />
@@ -126,10 +184,10 @@
       </form>
     </section>
     <footer>
-      <div class="container social">
+      <div class="social">
         <a
           class="btn"
-          href="https://web.facebook.com/royalgroceryshoppa"
+          href="https://web.facebook.com/anyebeevelyn/"
           target="_blank"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
@@ -139,7 +197,10 @@
             />
           </svg>
         </a>
-        <a class="btn" href="#">
+        <a
+          class="btn"
+          href="https://www.youtube.com/channel/UCZ561PanxFvyk2dT626Bzgw"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20">
             <title>YouTube</title>
             <path
@@ -157,7 +218,7 @@
         </a>
         <a
           class="btn"
-          href="https://www.instagram.com/royalgroceryshoppa/"
+          href="https://www.instagram.com/anyebeevelyn/"
           target="_blank"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20">
