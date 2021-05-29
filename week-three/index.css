@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  margin: 10px 0px;
+}
+
+img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  transition: all 200ms;
+}
