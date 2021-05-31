@@ -75,8 +75,9 @@ function resetForm() {
   quantityInput.value = "";
 }
 
-function addShoppingItemhandler() {
+function addShoppingItemhandler(e) {
   // Validate input values first
+  e.preventDefault();
   if (
     titleInput.value.trim().length < 3 ||
     !parseInt(quantityInput.value) ||
@@ -107,6 +108,7 @@ addBtn.addEventListener("click", addShoppingItemhandler);
 
 // Validate title input
 function titleHandler(e) {
+  e.preventDefault();
   if (titleInput.value.trim().length < 3) {
     e.preventDefault();
     titleError.innerText = "Title must be 3 letter above";
@@ -118,10 +120,10 @@ titleInput.addEventListener("keyup", titleHandler);
 
 // Handle quntity input
 function quantityHandler(e) {
+  e.preventDefault();
   // Checking for value here
   if (parseInt(quantityInput.value) != quantityInput.value) {
     e.preventDefault();
-    console.log(parseInt(quantityInput.value));
     quantityError.innerText = "A whole number expected";
   } else {
     quantityError.innerText = "";
@@ -131,6 +133,7 @@ quantityInput.addEventListener("keyup", quantityHandler);
 
 // Handle description input
 function descriptionHandler(e) {
+  e.preventDefault();
   if (descriptionInput.value.trim().length < 10) {
     e.preventDefault();
     descriptionError.innerText =
