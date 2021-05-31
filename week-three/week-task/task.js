@@ -84,7 +84,7 @@ function addShoppingItemhandler(e) {
     descriptionInput.value.trim().length < 10
   ) {
     descriptionError.innerText = "All values are required";
-    return null;
+    return false;
   }
 
   const shoppingItem = {
