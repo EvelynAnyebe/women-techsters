@@ -76,7 +76,6 @@ main {
   padding: 10px;
 
   border: 1px solid var(--grey-500);
-  box-sizing: border-box;
   border-radius: 10px;
 }
 
@@ -97,7 +96,6 @@ textarea {
 
   background: var(--grey-100);
   border: 1px solid var(--grey-500);
-  box-sizing: border-box;
   border-radius: 10px;
   outline: none;
 
@@ -133,7 +131,6 @@ textarea {
   padding: 10px 25px;
 
   border: 1px solid var(--grey-500);
-  box-sizing: border-box;
   border-radius: 10px;
 }
 
