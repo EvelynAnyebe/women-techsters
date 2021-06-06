@@ -2,6 +2,8 @@ import "./App.css";
 import Image from "./image.js";
 
 function App() {
+
+  // Static data used to populate image
   const imageList = [
     {
       src: "https://res.cloudinary.com/dxsty3st6/image/upload/v1620479680/hct-images/images/homepage-5_vzdix1.jpg",
@@ -26,6 +28,9 @@ function App() {
   ];
 
   return (
+    <main>
+     <h1>React Images and Buttons</h1>
+      <p>This showcases reusable images and buttons whereby props are passed to components and state is changed using events</p>
     <div className="App">
       {imageList.map((imageItem) => {
         return (
@@ -38,6 +43,7 @@ function App() {
         );
       })}
     </div>
+    </main>
   );
 }
 

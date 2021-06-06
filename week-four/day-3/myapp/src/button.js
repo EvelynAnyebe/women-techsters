@@ -1,3 +1,5 @@
+// Reusable button component for images
+
 function Button({ value, clickHandler }) {
   return (
     <button className="btn" onClick={clickHandler}>
