@@ -5,29 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Attendance Sheet</title>
+    <link href="style.css" rel="stylesheet" />
   </head>
 
   <body>
-    <input type="email" id="email" />
-    <button id="enter">Enter</button>
-    <button id="leave">Leave</button>
-    <button>Generate Report</button>
+    <main>
+      <div class="form-div">
+        <input type="email" id="email" />
+        <button id="enter" class="btn">Enter</button>
+        <button id="leave" class="btn">Leave</button>
+        <button id="report" class="btn">Generate Report</button>
+      </div>
 
-    <table border="2">
-      <thead>
-        <th>email</th>
-        <th>joined</th>
-        <th>left</th>
-      </thead>
+      
 
-      <tbody id="table-body">
-        <tr>
-          <td>choongsaeng.nwoka@womentechsters.org</td>
-          <td>tues, 12th 2001</td>
-          <td>tues, 12th 2001</td>
-        </tr>
-      </tbody>
-    </table>
+      <div class="table-container">
+        <h1>Attendance List</h1>
+        <table class="table-data">
+          <thead>
+            <tr>
+            <th>Email</th>
+            <th>Joined</th>
+            <th>Left</th>
+          </tr>
+          </thead>
+  
+          <tbody id="table-body">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-container" id="report-table">
+        <h1>Meeting Report</h1>
+        <table class="table-data">
+          <thead>
+            <tr>
+            <th>Email</th>
+            <th>Joined</th>
+            <th>Left</th>
+            <th>Duration (mins)</th>
+          </tr>
+          </thead>
+  
+          <tbody id="table-report-body">
+            
+          </tbody>
+        </table>
+      </div>
+      
+    </main>
 
     <script src="script.js"></script>
   </body>
