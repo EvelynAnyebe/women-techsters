@@ -22,5 +22,5 @@ const isPalindrome = (s) => {
   return false;
 };
 
-console.log(isPalindrome("ab_a"));
-console.log(isPalindrome("A man, a plan, a canal: Panama"));
+// console.log(isPalindrome("ab_a"));
+// console.log(isPalindrome("A man, a plan, a canal: Panama"));
