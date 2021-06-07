@@ -25,7 +25,7 @@ function AddItemForm({ addListItem }) {
   //Gaurd when typing to qunatity input
   const quantityInputHandler = (e) => {
     e.preventDefault();
-    if (e.target.value % 1 != 0 || e.target.value <= 0) {
+    if ((e.target.value % 1) !== 0 || e.target.value <= 0) {
       setQuantityInputError("A whole number expected");
       return false;
     }
@@ -50,7 +50,7 @@ function AddItemForm({ addListItem }) {
     e.preventDefault();
     if (
       description.trim().length < 10 ||
-      quantity % 1 != 0 ||
+      (quantity % 1) !== 0 ||
       quantity <= 0 ||
       title.trim().length < 3
     ) {
