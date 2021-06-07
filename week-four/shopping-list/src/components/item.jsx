@@ -8,7 +8,7 @@ function Item({itemID, title, description,quantity,editItem}) {
   const [itemStatus, setItemStatus] = useState(true);
   const [itemClass, setItemClass] = useState("item");
   const [btnDisabbled, setBtnDisabbled]=useState("");
-  const [itemValues, setItemValue]=useState({itemID, title, description,quantity})
+  
 
   const handleItemStatus = ()=>{
     if(itemStatus){
@@ -20,19 +20,19 @@ function Item({itemID, title, description,quantity,editItem}) {
   }
 
   const handleItemEdit =()=>{
-    editItem(itemValues);
+    editItem({itemID, title, description,quantity});
   }
 
   return (
     <div className={itemClass}>
       <div>
-        <h3>{itemValues.title}</h3>
-        <p>{itemValues.description}</p>
-        <p className="quantity">Quantity: x{itemValues.quantity}</p>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <p className="quantity">Quantity: x{quantity}</p>
       </div>
       <div>
-      <Button value="Edit" btnDisabbled={btnDisabbled} handleClick={handleItemEdit} id={`btnEdit${itemValues.itemID}`}/>
-      <Button value="Done" btnDisabbled={btnDisabbled} handleClick={handleItemStatus} id={`btnDone${itemValues.itemID}`}/>
+      <Button value="Edit" btnDisabbled={btnDisabbled} handleClick={handleItemEdit} id={`btnEdit${itemID}`}/>
+      <Button value="Done" btnDisabbled={btnDisabbled} handleClick={handleItemStatus} id={`btnDone${itemID}`}/>
       </div>
       
     </div>
