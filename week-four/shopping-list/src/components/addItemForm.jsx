@@ -17,7 +17,7 @@ function AddItemForm({ addListItem, editItem }) {
   // Handle item to edit with use effect
   useEffect(() => {
     console.log(" Use effect");
-    if(Object.keys(itemToEdit).length){
+    if (Object.keys(itemToEdit).length) {
       setTitle(itemToEdit.title);
       setQuantity(itemToEdit.quantity);
       setDescription(itemToEdit.description);
@@ -86,11 +86,21 @@ function AddItemForm({ addListItem, editItem }) {
 
       setEditMode(false);
       setItemToEdit({});
+
+      //Reset form
+      setTitle(null);
+      setQuantity(null);
+      setDescription(null);
       return true;
     }
     // Return a random integer from 1 to 1000
     const random = Math.floor(Math.random() * 1000);
     addListItem({ itemID: title + random, title, quantity, description });
+
+    //Reset form
+    setTitle(null);
+    setQuantity(null);
+    setDescription(null);
   };
 
   return (
