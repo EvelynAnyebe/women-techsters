@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "./button";
+import ShoppingListContext from "./shoppingListContext";
 
-function Item({itemID, title, description,quantity,handleItemEdit}) {
+function Item({itemID, title, description,quantity,index}) {
   /**This manages the status of an item whether active or done mode
     0 is done
 1 is active */
@@ -9,6 +10,7 @@ function Item({itemID, title, description,quantity,handleItemEdit}) {
   const [itemClass, setItemClass] = useState("item");
   const [btnDisabbled, setBtnDisabbled]=useState("");
   
+  const { setItemToEdit} = useContext(ShoppingListContext);
 
   const handleItemStatus = ()=>{
     if(itemStatus){
@@ -20,7 +22,7 @@ function Item({itemID, title, description,quantity,handleItemEdit}) {
   }
 
   const handleEdit =()=>{
-    handleItemEdit({itemID, title, description,quantity});
+    setItemToEdit({itemID, title, description,quantity,index});
   }
 
   return (

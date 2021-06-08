@@ -1,6 +1,6 @@
 import Item from "./item";
 
-function ShoppingList({ list, editItem }) {
+function ShoppingList({ list }) {
   return (
       
       
@@ -14,7 +14,7 @@ function ShoppingList({ list, editItem }) {
             title={item.title}
             description={item.description}
             quantity={item.quantity}
-            editItem={editItem}
+            index={item.index}
           />
         );
       })}

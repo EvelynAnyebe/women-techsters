@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import Button from "./button";
+import ShoppingListContext from "./shoppingListContext";
 
-function AddItemForm({ addListItem, getItemToEdit, editItem }) {
+function AddItemForm({ addListItem, editItem }) {
   //Current form value state
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
@@ -9,6 +10,20 @@ function AddItemForm({ addListItem, getItemToEdit, editItem }) {
   const [titleInputError, setTitleInputError] = useState("");
   const [quantityInputError, setQuantityInputError] = useState("");
   const [descInputError, setDescInputError] = useState("");
+  const [editMode, setEditMode] = useState(false);
+
+  const { itemToEdit, setItemToEdit } = useContext(ShoppingListContext);
+
+  // Handle item to edit with use effect
+  useEffect(() => {
+    console.log(" Use effect");
+    if(Object.keys(itemToEdit).length){
+      setTitle(itemToEdit.title);
+      setQuantity(itemToEdit.quantity);
+      setDescription(itemToEdit.description);
+      setEditMode(true);
+    }
+  }, [itemToEdit]);
 
   //Gaurd when typing to title input field
   const titleInputHandler = (e) => {
@@ -25,7 +40,7 @@ function AddItemForm({ addListItem, getItemToEdit, editItem }) {
   //Gaurd when typing to qunatity input
   const quantityInputHandler = (e) => {
     e.preventDefault();
-    if ((e.target.value % 1) !== 0 || e.target.value <= 0) {
+    if (e.target.value % 1 !== 0 || e.target.value <= 0) {
       setQuantityInputError("A whole number expected");
       return false;
     }
@@ -45,18 +60,36 @@ function AddItemForm({ addListItem, getItemToEdit, editItem }) {
   };
 
   const submitHandler = (e) => {
-    // Return a random integer from 1 to 1000
-    const random = Math.floor(Math.random() * 1000);
+    //Gaurd for inputs
     e.preventDefault();
     if (
       description.trim().length < 10 ||
-      (quantity % 1) !== 0 ||
+      quantity % 1 !== 0 ||
       quantity <= 0 ||
       title.trim().length < 3
     ) {
       setDescInputError("List item description should be 10 characters above");
       return false;
     }
+
+    // Edit item
+    if (editMode) {
+      const itemID = itemToEdit.itemID;
+      const index = itemToEdit.index;
+      editItem({
+        itemID,
+        title,
+        quantity,
+        description,
+        index,
+      });
+
+      setEditMode(false);
+      setItemToEdit({});
+      return true;
+    }
+    // Return a random integer from 1 to 1000
+    const random = Math.floor(Math.random() * 1000);
     addListItem({ itemID: title + random, title, quantity, description });
   };
 
@@ -69,7 +102,7 @@ function AddItemForm({ addListItem, getItemToEdit, editItem }) {
         name="title"
         required
         autoComplete="off"
-        defaultValue={title}
+        value={title}
         onChange={titleInputHandler}
       />
       <input
@@ -78,7 +111,7 @@ function AddItemForm({ addListItem, getItemToEdit, editItem }) {
         id="quantity"
         name="quantity"
         required
-        defaultValue={quantity}
+        value={quantity}
         onChange={quantityInputHandler}
       />
       <span id="titleError" className="error">
@@ -92,7 +125,7 @@ function AddItemForm({ addListItem, getItemToEdit, editItem }) {
         id="description"
         name="description"
         required
-        defaultValue={description}
+        value={description}
         onChange={descInputHandler}
       ></textarea>
       <span id="descriptionError" className="error">
