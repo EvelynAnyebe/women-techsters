@@ -16,7 +16,7 @@ function AddItemForm({ addListItem, editItem }) {
 
   // Handle item to edit with use effect
   useEffect(() => {
-    console.log(" Use effect");
+    
     if (Object.keys(itemToEdit).length) {
       setTitle(itemToEdit.title);
       setQuantity(itemToEdit.quantity);
