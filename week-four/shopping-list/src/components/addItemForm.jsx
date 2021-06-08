@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./button";
 
-function AddItemForm({ addListItem }) {
+function AddItemForm({ addListItem, getItemToEdit, editItem }) {
   //Current form value state
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
@@ -69,6 +69,7 @@ function AddItemForm({ addListItem }) {
         name="title"
         required
         autoComplete="off"
+        defaultValue={title}
         onChange={titleInputHandler}
       />
       <input
@@ -77,6 +78,7 @@ function AddItemForm({ addListItem }) {
         id="quantity"
         name="quantity"
         required
+        defaultValue={quantity}
         onChange={quantityInputHandler}
       />
       <span id="titleError" className="error">
@@ -90,6 +92,7 @@ function AddItemForm({ addListItem }) {
         id="description"
         name="description"
         required
+        defaultValue={description}
         onChange={descInputHandler}
       ></textarea>
       <span id="descriptionError" className="error">

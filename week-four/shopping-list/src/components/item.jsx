@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./button";
 
-function Item({itemID, title, description,quantity,editItem}) {
+function Item({itemID, title, description,quantity,handleItemEdit}) {
   /**This manages the status of an item whether active or done mode
     0 is done
 1 is active */
@@ -19,8 +19,8 @@ function Item({itemID, title, description,quantity,editItem}) {
     
   }
 
-  const handleItemEdit =()=>{
-    editItem({itemID, title, description,quantity});
+  const handleEdit =()=>{
+    handleItemEdit({itemID, title, description,quantity});
   }
 
   return (
@@ -31,7 +31,7 @@ function Item({itemID, title, description,quantity,editItem}) {
         <p className="quantity">Quantity: x{quantity}</p>
       </div>
       <div>
-      <Button value="Edit" btnDisabbled={btnDisabbled} handleClick={handleItemEdit} id={`btnEdit${itemID}`}/>
+      <Button value="Edit" btnDisabbled={btnDisabbled} handleClick={handleEdit} id={`btnEdit${itemID}`}/>
       <Button value="Done" btnDisabbled={btnDisabbled} handleClick={handleItemStatus} id={`btnDone${itemID}`}/>
       </div>
       
