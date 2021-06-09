@@ -28,34 +28,39 @@ function AddItemForm({ addListItem, editItem }) {
   //Gaurd when typing to title input field
   const titleInputHandler = (e) => {
     e.preventDefault();
+    setTitle(e.target.value);
     if (e.target.value.trim().length < 3) {
+     
       setTitleInputError("Title must be 3 letter above");
       return false;
     }
 
-    setTitle(e.target.value);
+   
     setTitleInputError("");
   };
 
   //Gaurd when typing to qunatity input
   const quantityInputHandler = (e) => {
     e.preventDefault();
+    setQuantity(parseInt(e.target.value));
     if (e.target.value % 1 !== 0 || e.target.value <= 0) {
+      
       setQuantityInputError("A whole number expected");
       return false;
     }
-    setQuantity(parseInt(e.target.value));
+    
     setQuantityInputError("");
   };
 
   //Gaurd when typing to description textarea
   const descInputHandler = (e) => {
     e.preventDefault();
+    setDescription(e.target.value);
     if (e.target.value.trim().length < 10) {
       setDescInputError("List item description should be 10 characters above");
       return false;
     }
-    setDescription(e.target.value);
+    
     setDescInputError("");
   };
 
@@ -88,9 +93,9 @@ function AddItemForm({ addListItem, editItem }) {
       setItemToEdit({});
 
       //Reset form
-      setTitle(null);
-      setQuantity(null);
-      setDescription(null);
+      setTitle("");
+      setQuantity("");
+      setDescription("");
       return true;
     }
     // Return a random integer from 1 to 1000
@@ -98,9 +103,9 @@ function AddItemForm({ addListItem, editItem }) {
     addListItem({ itemID: title + random, title, quantity, description });
 
     //Reset form
-    setTitle(null);
-    setQuantity(null);
-    setDescription(null);
+    setTitle("");
+    setQuantity("");
+    setDescription("");
   };
 
   return (
@@ -113,7 +118,7 @@ function AddItemForm({ addListItem, editItem }) {
         required
         autoComplete="off"
         value={title}
-        onChange={titleInputHandler}
+        onInput={titleInputHandler}
       />
       <input
         type="number"
@@ -122,7 +127,7 @@ function AddItemForm({ addListItem, editItem }) {
         name="quantity"
         required
         value={quantity}
-        onChange={quantityInputHandler}
+        onInput={quantityInputHandler}
       />
       <span id="titleError" className="error">
         {titleInputError}
@@ -136,7 +141,7 @@ function AddItemForm({ addListItem, editItem }) {
         name="description"
         required
         value={description}
-        onChange={descInputHandler}
+        onInput={descInputHandler}
       ></textarea>
       <span id="descriptionError" className="error">
         {descInputError}
