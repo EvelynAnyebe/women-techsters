@@ -51,7 +51,7 @@ function Login() {
         <Col
           sm={12}
           md={8}
-          className="d-flex justify-content-center align-items-center"
+          className="d-flex flex-column justify-content-center align-items-center"
         >
           <Toast className="myForm">
             <Row className="myForm-header">

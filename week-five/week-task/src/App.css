@@ -169,9 +169,14 @@ header img {
 
 .myForm {
   position: fixed;
-  left:1rem;
   padding: 20px;
   z-index: 2;
+}
+
+.togglebutton{
+  position:fixed;
+  top:5rem;
+
 }
 
 .myForm-header h2 {
@@ -261,10 +266,13 @@ footer p {
   padding: 10px 25px;
 }
 
-
+.item{
+  background-color: #eeeeee;
+  margin:3px 0px;
+}
 
 .item:hover{
-  background-color: var(--grey-200);
+  background-color: #ccc;
 }
 
 .item .quantity,.item-muted .quantity {
@@ -272,13 +280,13 @@ footer p {
 }
 
 .item-muted {
-  background-color: var(--muted-background);
+  background-color: rgb(0, 0, 0, 0.5);
   cursor: not-allowed;
   pointer-events: none;
 }
 
 .btn:disabled, .btn:disabled:hover,.btn:disabled:focus{
-  background-color: var(--muted-background);
+  background-color: rgb(0, 0, 0, 0.5);
   cursor: not-allowed;
   pointer-events: none;
 }

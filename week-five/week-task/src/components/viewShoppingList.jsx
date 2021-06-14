@@ -34,6 +34,7 @@ function ViewShoppingList() {
                 description={item.description}
                 quantity={item.quantity}
                 index={item.index}
+                toggleInput={toggleShow}
               />
             );
           })}
