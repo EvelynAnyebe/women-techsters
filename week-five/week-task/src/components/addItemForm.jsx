@@ -74,9 +74,9 @@ function AddItemForm() {
       setItemToEdit({});
 
       //Reset form
-      setTitle("");
-      setQuantity("");
-      setDescription("");
+      setTitle();
+      setQuantity();
+      setDescription();
       return true;
     }
     // Return a random integer from 1 to 1000
@@ -97,9 +97,9 @@ function AddItemForm() {
     addListItem({...item})
 
     //Reset form
-    setTitle("");
-    setQuantity("");
-    setDescription("");
+    setTitle();
+    setQuantity();
+    setDescription();
   };
 
   return (
