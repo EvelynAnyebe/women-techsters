@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import {useState} from 'react';
+import StateProvider from "./components/StateProvider";
 
 import "./App.css";
 
@@ -14,8 +16,10 @@ import NavBar from "./components/Navbar";
 import Footer from "./components/footer";
 
 function App() {
-  return (
+  
+  return (  
     <Router>
+      <StateProvider>
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -26,6 +30,7 @@ function App() {
         <Route component={NotFound} />
       </Switch>
       <Footer />
+      </StateProvider>
     </Router>
   );
 }

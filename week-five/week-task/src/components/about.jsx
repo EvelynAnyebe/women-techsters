@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 import { Row, Col, Container, Button } from "react-bootstrap";
 import Carosel from "./carosel";
 
@@ -30,7 +32,10 @@ function About() {
             pocket and always view it anywhere.
           </p>
           <p>
-            <Button variant="success">Start here</Button>
+              <Link to="/register">
+              <Button variant="success">Start here</Button>
+              </Link>
+        
           </p>
         </Col>
         <Col sm={12} md={6}>

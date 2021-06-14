@@ -17,7 +17,7 @@ const Header = () => {
               className="d-flex flex-column align-items-center px-4 py-4"
             >
               <h1>CAN'T REMEMBER YOUR SHOPPING LIST?</h1>
-              <Link to="/">
+              <Link to="/register">
                 <Button variant="success" className="btn-lg">
                   START HERE
                 </Button>

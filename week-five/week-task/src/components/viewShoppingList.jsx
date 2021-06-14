@@ -1,25 +1,45 @@
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Nav, Button } from "react-bootstrap";
+import { useContext } from "react";
+import { AppContext } from "./StateProvider";
+import Item from "./item";
 
 function ViewShoppingList() {
+  const { toggleShow, list } = useContext(AppContext);
+  // console.log(list);
   return (
     <Container>
       <Row
         className="d-flex justify-content-center align-items-center mt-5"
         noGutters
       >
-        <Col md={2}></Col>
-        <Col sm={12} md={8}>
-          <Card>
-            <Card.Body>
-              <h3>
-                My Shopping List
-                <i className="fas fa-list-alt icon" aria-hidden="true"></i>
-              </h3>
-              <hr />
-            </Card.Body>
-          </Card>
+        <Col md={2} sm={12}>
+          <Nav fill className="togglebutton">
+            <Nav.Item onClick={toggleShow}>
+              <Button variant="success" type="submit">
+                <i className="fas fa-plus icon" arial-hidden="true"></i>
+              </Button>
+            </Nav.Item>
+          </Nav>
         </Col>
-        <Col md={2}></Col>
+        <Col sm={12} md={8}>
+          <h3>My Shopping List</h3>
+          <hr />
+          <div className="#view-items">
+          {list.map((item) => {
+            return (
+              <Item
+                key={item.itemID}
+                itemID={item.itemID}
+                title={item.title}
+                description={item.description}
+                quantity={item.quantity}
+                index={item.index}
+              />
+            );
+          })}
+          </div>
+        </Col>
+        <Col md={2} sm={12}></Col>
       </Row>
     </Container>
   );

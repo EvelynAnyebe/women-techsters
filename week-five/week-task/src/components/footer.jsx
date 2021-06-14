@@ -1,10 +1,15 @@
 import { Container, Row, Col } from "react-bootstrap";
+import {useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const { pathname } = useLocation();
+  const paths = ["/login", "/register"];
   return (
-    <footer>
-      <hr className="line"/>
+    <footer className="mt-5">
+       {!paths.includes(pathname) && (
+     
       <Container fluid>
+         <hr className="line"/>
         <Row
           className="d-flex justify-content-center align-items-center"
           noGutters
@@ -18,6 +23,7 @@ const Footer = () => {
           </Col>
         </Row>
       </Container>
+       )}
     </footer>
   );
 };
