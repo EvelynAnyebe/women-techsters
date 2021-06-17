@@ -1,5 +1,5 @@
-const Button = ({ value, btnClass }) => {
-  return <button className={btnClass}>{value}</button>;
+const Button = ({ value, btnClass, type }) => {
+  return <button className={btnClass} type={type}>{value}</button>;
 };
 
 export default Button;

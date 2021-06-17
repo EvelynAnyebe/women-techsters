@@ -1,8 +1,12 @@
 import logo from "./../logo.svg";
 import Button from "./button";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "./StateProvider";
 
 const Navbar = () => {
+
+  const {state}=useContext(AppContext);
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -20,9 +24,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+          { (state.hasOwnProperty("isLoggedIn") && state.isLoggedIn)
+          ? <Button value="Logout" btnClass="btn" />
+          :(
             <Link to="/login">
               <Button value="Login" btnClass="btn" />
             </Link>
+          )}
           </li>
         </ul>
       </div>
