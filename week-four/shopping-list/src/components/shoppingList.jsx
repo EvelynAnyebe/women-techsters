@@ -4,7 +4,6 @@ function ShoppingList({ list }) {
   return (
     <section id="view-items">
       <h1>TODO LIST APP</h1>
-      <p>Manage your tasks easily with this app</p>
       {list.map((item) => {
         return (
           <Item
