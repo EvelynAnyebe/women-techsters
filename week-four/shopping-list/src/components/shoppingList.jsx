@@ -3,7 +3,8 @@ import Item from "./item";
 function ShoppingList({ list }) {
   return (
     <section id="view-items">
-    <h1>My Shopping List</h1>
+      <h1>TODO LIST APP</h1>
+      <p>Manage your tasks easily with this app</p>
       {list.map((item) => {
         return (
           <Item
@@ -17,7 +18,6 @@ function ShoppingList({ list }) {
         );
       })}
     </section>
-
   );
 }
 

@@ -3,7 +3,10 @@ import Button from "./button";
 import ShoppingListContext from "./shoppingListContext";
 
 function AddItemForm({ addListItem, editItem }) {
-  //Current form value state
+
+  /*------------------------------------------------------------
+  Add item form states
+--------------------------------------------------------------*/
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [quantity, setQuantity] = useState();
@@ -14,7 +17,9 @@ function AddItemForm({ addListItem, editItem }) {
 
   const { itemToEdit, setItemToEdit } = useContext(ShoppingListContext);
 
-  // Handle item to edit with use effect
+  /*------------------------------------------------------------
+    Handle item to edit with use effect
+--------------------------------------------------------------*/
   useEffect(() => {
     
     if (Object.keys(itemToEdit).length) {
@@ -25,6 +30,10 @@ function AddItemForm({ addListItem, editItem }) {
     }
   }, [itemToEdit]);
 
+  /*------------------------------------------------------------
+    Input guards
+--------------------------------------------------------------*/
+
   //Gaurd when typing to title input field
   const titleInputHandler = (e) => {
     e.preventDefault();
@@ -34,8 +43,6 @@ function AddItemForm({ addListItem, editItem }) {
       setTitleInputError("Title must be 3 letter above");
       return false;
     }
-
-   
     setTitleInputError("");
   };
 
@@ -44,11 +51,9 @@ function AddItemForm({ addListItem, editItem }) {
     e.preventDefault();
     setQuantity(parseInt(e.target.value));
     if (e.target.value % 1 !== 0 || e.target.value <= 0) {
-      
       setQuantityInputError("A whole number expected");
       return false;
     }
-    
     setQuantityInputError("");
   };
 
@@ -60,10 +65,13 @@ function AddItemForm({ addListItem, editItem }) {
       setDescInputError("List item description should be 10 characters above");
       return false;
     }
-    
     setDescInputError("");
   };
 
+
+/*------------------------------------------------------------
+Handle submit
+--------------------------------------------------------------*/
   const submitHandler = (e) => {
     //Gaurd for inputs
     e.preventDefault();
@@ -73,7 +81,7 @@ function AddItemForm({ addListItem, editItem }) {
       quantity <= 0 ||
       title.trim().length < 3
     ) {
-      setDescInputError("List item description should be 10 characters above");
+      setDescInputError("Please fill all values");
       return false;
     }
 

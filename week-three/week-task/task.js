@@ -1,5 +1,8 @@
 const shoppingList = []; // Array of shopping items
 
+/*-----------------------------------------------------------
+Gettin required dom elements to use for the app
+-----------------------------------------------------------*/
 const titleInput = document.getElementById("title");
 const quantityInput = document.getElementById("quantity");
 const descriptionInput = document.getElementById("description");
@@ -8,6 +11,9 @@ const titleError = document.getElementById("titleError");
 const quantityError = document.getElementById("quantityError");
 const descriptionError = document.getElementById("descriptionError");
 
+/*-----------------------------------------------------------
+Update Shopping List
+-----------------------------------------------------------*/
 function updateDom() {
   const shoppingListContainer = document.getElementById("view-items");
   shoppingListContainer.innerHTML = "";
@@ -55,6 +61,9 @@ function createShoppingItem(item, itemId) {
   return divItemElement;
 }
 
+/*-----------------------------------------------------------
+Delete item handler function
+-----------------------------------------------------------*/
 function deleteShoppingItemHandler(e) {
   const parentElement = e.target.parentElement;
   const parentElementId = parseInt(parentElement.id);
@@ -62,6 +71,9 @@ function deleteShoppingItemHandler(e) {
   updateDom();
 }
 
+/*-----------------------------------------------------------
+Add shopping list handler. 
+-----------------------------------------------------------*/
 function addShoppingItemhandler(e) {
   // Validate input values first
   e.preventDefault();
@@ -89,6 +101,10 @@ function addShoppingItemhandler(e) {
 }
 
 form.addEventListener("submit", addShoppingItemhandler);
+
+/*-----------------------------------------------------------
+Input validation part
+-----------------------------------------------------------*/
 
 // Validate title input
 function titleHandler(e) {
@@ -126,5 +142,4 @@ function descriptionHandler(e) {
     descriptionError.innerText = "";
   }
 }
-
 descriptionInput.addEventListener("keyup", descriptionHandler);
