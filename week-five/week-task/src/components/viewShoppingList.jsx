@@ -25,15 +25,14 @@ function ViewShoppingList() {
           <h3>My Shopping List</h3>
           <hr />
           <div className="#view-items">
-          {list.map((item) => {
+          {list.map((item,idx) => {
             return (
               <Item
-                key={item.itemID}
-                itemID={item.itemID}
+                key={`${item.id} ${idx}`}
+                itemID={item.id}
                 title={item.title}
                 description={item.description}
-                quantity={item.quantity}
-                index={item.index}
+                completed={item.completed}
                 toggleInput={toggleShow}
               />
             );

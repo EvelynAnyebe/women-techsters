@@ -26,10 +26,10 @@ function About() {
     <Container style={styleObject.divBg} fluid>
       <Row className="p-4">
         <Col sm={12} md={6} style={styleObject.textAlign}>
-          <h1 style={styleObject.h1}>Shopping List Manager</h1>
+          <h1 style={styleObject.h1}>TODOs Manager</h1>
           <p>
-            Quickly maintain your shopping lists here. You can have this in your
-            pocket and always view it anywhere.
+            Quickly maintain your todos here. You can have this in your
+            pocket and always view it from anywhere and at anytime.
           </p>
           <p>
               <Link to="/register">

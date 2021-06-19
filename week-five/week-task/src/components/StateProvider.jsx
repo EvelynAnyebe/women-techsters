@@ -11,17 +11,13 @@ const initialState = {
 export default function StateProvider({ children }) {
   const [appData, setAppData] = useState(initialState);
   const [showItemForm, setItemFormShow] = useState(false);
-  const [ itemToEdit, setItemToEdit ] = useState({});
+  const [itemToEdit, setItemToEdit] = useState({});
   const [list, setList] = useState([]);
   const paths = ["/login", "/register"];
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   function handleSetCookie(data) {
-    setCookie(
-      "user",
-      { email: data.email, userId: data.userId },
-      { path: "/" }
-    );
+    setCookie("user", data, { path: "/" });
   }
 
   function handleRemoveCookie() {
@@ -38,18 +34,31 @@ export default function StateProvider({ children }) {
     setList([...list, item]);
   };
 
-  const editItem = (item) => {
-    const newList=list;
-    newList[item.index]=item;
-    console.log(newList);
-    setList(newList);
+  const handleGetTodo=()=>{
+    fetch(
+      `https://user-manager-three.vercel.app/api/todo?userId=${cookies.user.id}`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        if(result.error){
+          console.log("Error fetching todos",result.message);
+          return true;
+        }
+        setList(result.body);
+      })
+      .catch((err) => {
+        console.log("this error occurred when fetching todos", err);
+      });
+    
+  }
+
+  const editItem = () => {
+    handleGetTodo();
   };
 
   useEffect(() => {
     if (appData.isLoggedIn) {
-      const user = JSON.parse(localStorage.getItem(cookies.user.email));
-      console.log(user.shoppingList);
-      setList(user.shoppingList);
+      handleGetTodo();
     }
   }, [appData]);
 
@@ -64,9 +73,12 @@ export default function StateProvider({ children }) {
         handleSetCookie,
         handleRemoveCookie,
         paths,
-        itemToEdit, setItemToEdit,
+        itemToEdit,
+        setItemToEdit,
         list,
-        addListItem,editItem
+        setList,
+        addListItem,
+        editItem,
       }}
     >
       {children}

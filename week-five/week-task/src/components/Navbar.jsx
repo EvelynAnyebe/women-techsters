@@ -50,7 +50,7 @@ function NavBar() {
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
               />
-              Shopping List
+              TODOs Manager
             </Navbar.Brand>
             <Navbar.Toggle
               aria-controls="responsive-navbar-nav"

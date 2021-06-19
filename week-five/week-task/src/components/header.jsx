@@ -16,7 +16,7 @@ const Header = () => {
               sm={12}
               className="d-flex flex-column align-items-center px-4 py-4"
             >
-              <h1>CAN'T REMEMBER YOUR SHOPPING LIST?</h1>
+              <h1>CAN'T REMEMBER YOUR TODOS?</h1>
               <Link to="/register">
                 <Button variant="success" className="btn-lg">
                   START HERE

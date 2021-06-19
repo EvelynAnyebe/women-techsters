@@ -17,29 +17,34 @@ import { AppContext } from "../components/StateProvider";
 function Login() {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
-  const { setState,handleSetCookie } = useContext(AppContext);
+  const { setState, handleSetCookie } = useContext(AppContext);
 
   const login = ({ email, password }) => {
-    // get the users data
-    const user = localStorage.getItem(email);
-
-    if (!user) {
-      return alert("An account for this email was not found");
-    }
-
-    const userdata = JSON.parse(user);
-
-    if (password !== userdata.password) {
-      return alert("email or password was incorrect");
-    }
-    handleSetCookie(userdata);
-    setState((prevstate) => {
-      return {
-        ...prevstate,
-        isLoggedIn: true
-      };
-    });
-    history.replace("/dashboard");
+    fetch(`https://user-manager-three.vercel.app/api/user/login`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.error) {
+          return alert(result.message);
+        }
+        handleSetCookie(result.body);
+        setState((prevstate) => {
+          return {
+            ...prevstate,
+            isLoggedIn: true,
+          };
+        });
+        history.replace("/dashboard");
+      })
+      .catch((err) => {
+        console.log("this error occurred", err);
+        return alert(err.message);
+      });
   };
   return (
     <Container>

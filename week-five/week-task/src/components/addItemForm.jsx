@@ -1,7 +1,7 @@
 import { Container, Row, Col, Toast, Form, Button } from "react-bootstrap";
 import { AppContext } from "./StateProvider";
 import { useCookies } from "react-cookie";
-import { useContext, useState, useEffect,useRef } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 
 function AddItemForm() {
   const {
@@ -9,7 +9,8 @@ function AddItemForm() {
     toggleShow,
     itemToEdit,
     setItemToEdit,
-    addListItem,editItem
+    addListItem,
+    editItem,
   } = useContext(AppContext);
 
   //Current form value state
@@ -20,58 +21,52 @@ function AddItemForm() {
   const [descInputError, setDescInputError] = useState("");
   const [cookies] = useCookies(["user"]);
 
-  const titleRef=useRef();
-  const qtyRef=useRef();
-  const descRef=useRef();
+  const titleRef = useRef();
+  const qtyRef = useRef();
+  const descRef = useRef();
 
   // Handle item to edit with use effect
   useEffect(() => {
     if (Object.keys(itemToEdit).length) {
       setTitle(itemToEdit.title);
-      setQuantity(itemToEdit.quantity);
       setDescription(itemToEdit.description);
       setEditMode(true);
     }
   }, [itemToEdit]);
 
   const submitHandler = (e) => {
-   
     //Gaurd for inputs
     e.preventDefault();
 
-    const user = JSON.parse(localStorage.getItem(cookies.user.email));
-    const description=descRef.current.value;
-    const quantity=qtyRef.current.value;
-    const title=titleRef.current.value;
-
-
-    if (
-      description.trim().length < 10 ||
-      quantity % 1 !== 0 ||
-      quantity <= 0 ||
-      title.trim().length < 3
-    ) {
-      setDescInputError(
-        `List item title must be 3 letter above, quntity should be 
-        whole numbers and description should be 10 characters above`
-      );
-      return false;
-    }
-
     // Edit item
     if (editMode) {
-      const itemID = itemToEdit.itemID;
-      const index = itemToEdit.index;
-      editItem({
-        itemID,
-        title,
-        quantity,
-        description,
-        index,
-      });
+      let updatedTodo = {
+        id: itemToEdit.itemID, //required
+        completed: itemToEdit.completed, //required
+        description: descRef.current.value,
+      };
 
-      setEditMode(false);
-      setItemToEdit({});
+      fetch(`https://user-manager-three.vercel.app/api/todo/update`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(updatedTodo),
+      })
+        .then((res) => res.json())
+        .then(async (result) => {
+          if(result.error){
+            return alert(result.message);
+          }
+          setItemToEdit({});
+          await editItem();
+          await setEditMode(false);
+          await toggleShow();
+          
+        })
+        .catch((err) => {
+          console.log("this error occurred", err);
+        });
 
       //Reset form
       setTitle();
@@ -79,27 +74,52 @@ function AddItemForm() {
       setDescription();
       return true;
     }
-    // Return a random integer from 1 to 1000
-    const random = Math.floor(Math.random() * 1000);
-    const item={
-      itemID: title + random,
-      title,
-      quantity,
-      description,
-    }
-    if(!user.shoppingList){
-      user.shoppingList=[];
-    }
-    user.shoppingList=[...user.shoppingList, item];
-    // save the users data for accessing later
-    localStorage.setItem(cookies.user.email, JSON.stringify(user));
 
-    addListItem({...item})
 
-    //Reset form
-    setTitle();
-    setQuantity();
-    setDescription();
+    if (titleRef.current.value.trim().length < 3) {
+      setDescInputError(`Todo title must be 3 letter above`);
+      return false;
+    }
+
+    let newtodo = {
+      userId: cookies.user.id, //required
+      completed: false, //required
+      title: titleRef.current.value, //required
+    };
+
+    if (descRef.current.value && descRef.current.value.trim()) {
+      newtodo.description = descRef.current.value;
+    }
+    if (parseInt(qtyRef.current.value)) {
+      newtodo.order = qtyRef.current.value;
+    }
+
+    // console.log(newtodo);
+
+    fetch(`https://user-manager-three.vercel.app/api/todo/create`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newtodo),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.error) {
+          return alert(result.message);
+        }
+
+        addListItem({ ...newtodo });
+        toggleShow();
+        //Reset form
+        setTitle();
+        setQuantity();
+        setDescription();
+      })
+      .catch((err) => {
+        console.log("this error occurred", err);
+        alert(err.message);
+      });
   };
 
   return (
@@ -117,16 +137,18 @@ function AddItemForm() {
           >
             <Toast.Header>
               <h2>
-                <strong className="mr-auto">Add Item</strong>
+                <strong className="mr-auto">Add TODO</strong>
               </h2>
               <hr />
             </Toast.Header>
 
             <Toast.Body>
-              <Form onSubmit={submitHandler} >
+              <Form onSubmit={submitHandler}>
                 <Form.Row>
                   <Form.Group as={Col} md={6} sm={12}>
                     <Form.Label>Item Title</Form.Label>
+                    
+                    {!(editMode) && (
                     <Form.Control
                       type="text"
                       placeholder="Enter title"
@@ -136,34 +158,45 @@ function AddItemForm() {
                       autoComplete="off"
                       value={title}
                       ref={titleRef}
-                     
                     />
+                    )}
+                    
+                    {(editMode) && (
+                    <Form.Control
+                      type="text"
+                      id="title"
+                      name="title"
+                      plaintext
+                      readOnly
+                      defaultValue={title}
+                      ref={titleRef}
+                    />
+                    )}
                   </Form.Group>
-
+                  {!(editMode) && (
                   <Form.Group as={Col} md={6} sm={12}>
-                    <Form.Label>Quantity</Form.Label>
+                  
+                    <Form.Label>Order</Form.Label>
                     <Form.Control
                       placeholder="e.g 2"
                       type="number"
                       id="quantity"
                       name="quantity"
-                      required
                       value={quantity}
                       ref={qtyRef}
-                      
                     />
                   </Form.Group>
+                  )}
                 </Form.Row>
 
                 <Form.Group>
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     as="textarea"
-                    placeholder="Cooking items for the week"
+                    placeholder="Cooking for the week"
                     id="description"
                     name="description"
-                    required
-                    value={description}
+                    defaultValue={description}
                     ref={descRef}
                   />
                 </Form.Group>
