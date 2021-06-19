@@ -2,8 +2,6 @@ import Item from "./item";
 
 function ShoppingList({ list }) {
   return (
-      
-      
     <section id="view-items">
     <h1>My Shopping List</h1>
       {list.map((item) => {

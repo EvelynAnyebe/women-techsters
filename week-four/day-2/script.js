@@ -41,6 +41,7 @@ reportBtn.addEventListener("click",generateReport);
 function addUser() {
   const email = emailInput.value;
 
+  
   if (email == "") {
     return alert("Please type a users email address");
   }

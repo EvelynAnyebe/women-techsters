@@ -1,9 +1,12 @@
+import {useContext} from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import {useLocation } from "react-router-dom";
+import { AppContext } from "./StateProvider";
 
 const Footer = () => {
   const { pathname } = useLocation();
-  const paths = ["/login", "/register"];
+  const {  paths } = useContext(AppContext);
+ 
   return (
     <footer className="mt-5">
        {!paths.includes(pathname) && (
